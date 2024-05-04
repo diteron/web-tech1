@@ -190,6 +190,48 @@ nav a:hover {
     list-style-image: url(img/nut.svg);
 }
 
+.footer-container {
+    background: var(--navbar-background-color);
+    color: var(--navbar-text-color);
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    min-width: var(--page-min-width);
+}
+
+footer {
+    text-align: center;
+    margin-inline: auto;
+    max-width: var(--page-max-width);
+    padding-left: var(--container-padding);
+    padding-right: var(--container-padding);
+    display: flex;
+    flex-wrap: wrap-reverse;
+    justify-content: stretch;
+    gap: 2rem;
+}
+
+.copyright {
+    display: flex;
+    align-items: end;
+    font-family: 'Open Sans';
+    font-weight: 400;
+    font-size: 1.2rem;
+    text-align: left;
+    padding-bottom: 2rem;
+    flex-grow: 1;
+}
+
+.company-info {
+    font-family: 'Open Sans';
+    font-weight: 400;
+    font-size: 1.2rem;
+    text-align: right;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    flex-grow: 1;
+}
+
 @media screen and (min-width: 800px) {
     :root {
         --container-padding: 1.5rem;
