@@ -18,7 +18,7 @@
     --container-padding: 0.7rem;
 }
 
-.container {
+.main-container {
     margin-inline: auto;
     max-width: var(--page-max-width);
     min-width: var(--page-min-width);
@@ -216,16 +216,24 @@ footer {
     align-items: end;
     font-family: 'Open Sans';
     font-weight: 400;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     text-align: left;
     padding-bottom: 2rem;
     flex-grow: 1;
 }
 
+footer .logo {
+    padding: 0.8rem 0 0.8rem 0;
+    color: var(--navbar-text-color);
+    font-family: 'Open Sans';
+    font-weight: 600;
+    font-size: 1.7rem;
+}
+
 .company-info {
     font-family: 'Open Sans';
     font-weight: 400;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     text-align: right;
     padding-top: 2rem;
     padding-bottom: 2rem;
