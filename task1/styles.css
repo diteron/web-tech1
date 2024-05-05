@@ -7,7 +7,7 @@
 }
 
 :root {
-    --page-max-width: 1216px;
+    --page-max-width: 1300px;
     --page-min-width: 280px;
     --navbar-background-color: #34393d;
     --navbar-text-color: #ebebeb;
@@ -18,10 +18,8 @@
     --container-padding: 0.7rem;
 }
 
-.main-container {
-    margin-inline: auto;
-    max-width: var(--page-max-width);
-    min-width: var(--page-min-width);
+ul {
+    list-style-image: url(img/nut.svg);
 }
 
 .nav-container {
@@ -99,9 +97,9 @@ nav a {
     text-decoration: none;
     font-family: 'Open Sans';
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 1.1rem;
     text-transform: uppercase;
-    padding: 0.5rem 0.5rem;
+    padding: 0.7rem 0.7rem;
     transition: background-color 250ms linear;
 }
 
@@ -113,6 +111,15 @@ nav a {
 nav a:hover {
     background-color: var(--highlight-color);
 }
+
+.main-container {
+    margin-inline: auto;
+    max-width: var(--page-max-width);
+    min-width: var(--page-min-width);
+}
+
+
+/* --------------  Home page  -------------- */
 
 .welcome {
     padding-top: 5rem;
@@ -155,13 +162,13 @@ nav a:hover {
 
 .welcome-image-1 img,
 .welcome-image-2 img {
-    max-height: 300px;
+    max-height: 400px;
     flex-grow: 1;
     object-fit: cover;
     width: 100%;
 }
 
-.services {
+.home-services {
     margin-top: 0.5rem;
     padding-bottom: 2rem;
     padding-left: var(--container-padding);
@@ -169,7 +176,7 @@ nav a:hover {
     background-color: var(--services-background-color);
 }
 
-.services h1 {
+.home-services h1 {
     font-family: 'Open Sans';
     font-weight: 600;
     font-size: 1.7rem;
@@ -178,7 +185,7 @@ nav a:hover {
     padding-bottom: 0.7rem;
 }
 
-.services ul {
+.home-services ul {
     font-family: 'Open Sans';
     font-weight: 400;
     font-size: 1.2rem;
@@ -186,9 +193,10 @@ nav a:hover {
     margin-left: 2rem;
 }
 
-.services li {
-    list-style-image: url(img/nut.svg);
-}
+
+/* --------------  Services page  -------------- */
+
+
 
 .footer-container {
     background: var(--navbar-background-color);
@@ -240,7 +248,7 @@ footer .logo {
     flex-grow: 1;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 860px) {
     :root {
         --container-padding: 1.5rem;
     }
@@ -251,7 +259,7 @@ footer .logo {
 
     header {
         display: grid;
-        grid-template-columns: 1fr auto minmax(40rem, 7fr) 1fr;
+        grid-template-columns: 1fr auto minmax(44rem, 7fr) 0.5fr;
     }
 
     .logo {
