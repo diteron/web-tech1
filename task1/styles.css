@@ -217,7 +217,7 @@ footer {
     gap: 2rem;
 }
 
-.copyright {
+footer .copyright {
     display: flex;
     align-items: end;
     font-family: 'Open Sans';
@@ -236,7 +236,7 @@ footer .logo {
     font-size: 1.7rem;
 }
 
-.company-info {
+footer .company-info {
     font-family: 'Open Sans';
     font-weight: 400;
     font-size: 1.1rem;
