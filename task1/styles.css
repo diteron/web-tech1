@@ -156,8 +156,6 @@ nav a:hover {
     justify-content: center;
     align-items: stretch;
     gap: 1rem;
-    padding-left: var(--container-padding);
-    padding-right: var(--container-padding);
 }
 
 .welcome-image-1 img,
@@ -292,5 +290,7 @@ footer .logo {
     .welcome-images {
         flex-wrap: nowrap;
         gap: 3rem;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
     }
 }
