@@ -21,7 +21,7 @@
 h1 {
     font-family: 'Open Sans';
     font-weight: 600;
-    font-size: 2rem;
+    font-size: 1.9rem;
     text-align: center;
     padding-bottom: 1rem;
 }
@@ -34,6 +34,14 @@ h2 {
     padding-bottom: 0.7rem;
 }
 
+h3 {
+    font-family: 'Open Sans';
+    font-weight: 600;
+    font-size: 1.4rem;
+    text-align: left;
+    padding-bottom: 0.2rem;
+}
+
 ul {
     list-style-image: url(img/nut.svg);
     color: var(--standard-text-color);
@@ -42,10 +50,6 @@ ul {
     font-size: 1.2rem;
     text-align: left;
     margin-left: 2rem;
-}
-
-li::marker {
-    fill: aqua;
 }
 
 .header-container {
@@ -145,6 +149,7 @@ nav a:hover {
     max-width: var(--page-max-width);
     min-width: var(--page-min-width);
     padding-top: 6rem;
+    padding-bottom: 2rem;
     background-color: var(--standard-background-color);
     padding-left: var(--container-padding);
     padding-right: var(--container-padding);
@@ -195,7 +200,6 @@ nav a:hover {
 }
 
 .home-services {
-    padding-bottom: 2rem;
     color: var(--standard-text-color);
 }
 
@@ -239,8 +243,33 @@ nav a:hover {
     width: 100%;
 }
 
-.goal {
-    padding-bottom: 2rem;
+
+/* --------------  Contacts page  -------------- */
+
+main .taxpayer-num {
+    font-size: 0.9rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.map {
+    max-width: 500px;
+    padding-top: 1rem;
+}
+
+.iframe-container {
+    position: relative;
+    padding-bottom: 75%;
+    height: 0;
+    overflow: hidden;
+}
+
+iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 
@@ -298,7 +327,7 @@ footer .company-info {
 
 /* --------------  Media queries  -------------- */
 
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 56rem) {
     :root {
         --container-padding: 1.7rem;
     }
