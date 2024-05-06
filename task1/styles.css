@@ -14,7 +14,7 @@
     --highlight-color: #685b35;
     --standard-text-color: #141b24;
     --standard-background-color: #dfe6ee;
-    --services-background-color: #fcf8d4;
+    --home-services-background-color: #fcf8d4;
     --container-padding: 0.7rem;
 }
 
@@ -23,7 +23,6 @@ h1 {
     font-weight: 600;
     font-size: 2rem;
     text-align: center;
-    padding-top: 1rem;
     padding-bottom: 1rem;
 }
 
@@ -32,7 +31,6 @@ h2 {
     font-weight: 600;
     font-size: 1.7rem;
     text-align: left;
-    padding-top: 0.7rem;
     padding-bottom: 0.7rem;
 }
 
@@ -50,7 +48,7 @@ li::marker {
     fill: aqua;
 }
 
-.nav-container {
+.header-container {
     background: var(--navbar-background-color);
     top: 0;
     position: fixed;
@@ -103,9 +101,10 @@ nav {
     transform: scale(1, 0);
     transform-origin: top;
     transition: transform 400ms ease-in-out;
+    box-shadow: 0px 16px 16px 0px rgba(0, 0, 0, 0.2);
 }
 
-.nav-toggle:checked~nav {
+.nav-toggle:checked ~ nav {
     transform: scale(1, 1);
 }
 
@@ -145,16 +144,24 @@ nav a:hover {
     margin-inline: auto;
     max-width: var(--page-max-width);
     min-width: var(--page-min-width);
+    padding-top: 6rem;
+    background-color: var(--standard-background-color);
+    padding-left: var(--container-padding);
+    padding-right: var(--container-padding);
 }
 
+.main-container p {
+    color: var(--standard-text-color);
+    font-family: 'Open Sans';
+    font-weight: 400;
+    font-size: 1.2rem;
+    text-align: left;
+}
 
 /* --------------  Home page  -------------- */
 
 .welcome {
-    padding-top: 5rem;
     padding-bottom: 2rem;
-    padding-left: var(--container-padding);
-    padding-right: var(--container-padding);
     background-color: var(--standard-background-color);
     color: var(--standard-text-color);
 }
@@ -187,25 +194,22 @@ nav a:hover {
 }
 
 .home-services {
-    margin-top: 0.5rem;
     padding-bottom: 2rem;
-    padding-left: var(--container-padding);
-    padding-right: var(--container-padding);
-    background-color: var(--services-background-color);
     color: var(--standard-text-color);
 }
 
 
 /* --------------  Services page  -------------- */
 
-.services-main-container {
-    margin-inline: auto;
-    max-width: var(--page-max-width);
-    min-width: var(--page-min-width);
+.service {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    align-items: stretch;
+    padding-bottom: 2rem;
 }
 
-.services-main-container img {
-    margin-inline: auto;
+.service img {
     max-width: 500px;
     max-height: 375px;
     object-fit: cover;
@@ -213,20 +217,8 @@ nav a:hover {
     width: 100%;
 }
 
-.services-main-container h2 {
+.service h2 {
     padding-top: 0;
-}
-
-.first-service {
-    background-color: var(--standard-background-color);
-    display: flex;
-    padding-top: 6rem;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-    align-items: stretch;
-    padding-left: var(--container-padding);
-    padding-right: var(--container-padding);
-    padding-bottom: 2rem;
 }
 
 .service-text {
@@ -234,23 +226,26 @@ nav a:hover {
     width: 100%;
 }
 
-.other-service {
-    background-color: var(--standard-background-color);
-    display: flex;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-    align-items: stretch;
-    padding-left: var(--container-padding);
-    padding-right: var(--container-padding);
+
+/* --------------  About page  -------------- */
+
+.split-image {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    max-height: 250px;
+    flex-grow: 1;
+    object-fit: cover;
+    width: 100%;
+}
+
+.goal {
     padding-bottom: 2rem;
 }
 
 .footer-container {
     background: var(--navbar-background-color);
     color: var(--navbar-text-color);
-    top: 0;
     width: 100%;
-    z-index: 999;
     min-width: var(--page-min-width);
 }
 
@@ -296,7 +291,10 @@ footer .company-info {
     flex-grow: 1;
 }
 
-@media screen and (min-width: 860px) {
+
+/* --------------  Media queries  -------------- */
+
+@media screen and (min-width: 900px) {
     :root {
         --container-padding: 1.7rem;
     }
@@ -337,6 +335,9 @@ footer .company-info {
         position: relative;
     }
 
+
+/* --------------  Home page media queries  -------------- */
+
     .welcome-images {
         flex-wrap: nowrap;
         gap: 3rem;
@@ -344,11 +345,14 @@ footer .company-info {
         padding-right: 1.5rem;
     }
 
-    .first-service {
+
+/* --------------  Services page media queries  -------------- */
+
+    .service {
         flex-wrap: nowrap;
     }
 
-    .other-service {
-        flex-wrap: nowrap;
+    .service img {
+        margin-inline: auto; 
     }
 }
