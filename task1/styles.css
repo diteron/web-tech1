@@ -253,7 +253,7 @@ main .taxpayer-num {
 }
 
 .map {
-    max-width: 500px;
+    max-width: 650px;
     margin-top: 1rem;
     border: 1px solid #74858b;
 }
@@ -390,4 +390,23 @@ footer .company-info {
     .service img {
         margin-inline: auto; 
     }
+
+
+/* --------------  Contacts page media queries  -------------- */
+
+    .contacts-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 1rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    .map {
+        margin-top: 0;
+        width: 650px;
+        border: 1px solid #74858b;
+    }
+
 }
