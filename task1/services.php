@@ -1,5 +1,5 @@
 <?php 
-    $title = "АвтоМастер";
+    $title = "Услуги";
     include "templates/header.php";
 ?>
 

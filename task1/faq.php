@@ -1,5 +1,5 @@
 <?php
-    $title = "АвтоМастер";
+    $title = "FAQ";
     include "templates/header.php";
 ?>
 
@@ -44,7 +44,7 @@
         </div>
         <div class="feedback-form">
             <h3 class="description">Если у вас есть еще вопросы, вы можете задать их используя следующую форму и мы вам перезвоним.</h3>
-            <form action="faq.html" method="POST">
+            <form action="faq.php" method="POST">
                 <div class="form-fields">
                     <label for="name">Имя*:</label><br>
                     <input type="text" id="name" required><br>
