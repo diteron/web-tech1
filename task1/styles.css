@@ -21,7 +21,7 @@
 h1 {
     font-family: 'Open Sans';
     font-weight: 600;
-    font-size: 1.9rem;
+    font-size: 1.7rem;
     text-align: center;
     padding-bottom: 1rem;
 }
@@ -29,7 +29,7 @@ h1 {
 h2 {
     font-family: 'Open Sans';
     font-weight: 600;
-    font-size: 1.7rem;
+    font-size: 1.4rem;
     text-align: left;
     padding-bottom: 0.7rem;
 }
@@ -37,7 +37,7 @@ h2 {
 h3 {
     font-family: 'Open Sans';
     font-weight: 600;
-    font-size: 1.4rem;
+    font-size: 1.1rem;
     text-align: left;
     padding-bottom: 0.2rem;
 }
@@ -47,7 +47,7 @@ ul {
     color: var(--standard-text-color);
     font-family: 'Open Sans';
     font-weight: 400;
-    font-size: 1.2rem;
+    font-size: 1rem;
     text-align: left;
     margin-left: 2rem;
 }
@@ -72,7 +72,7 @@ header {
     color: var(--navbar-text-color);
     font-family: 'Open Sans';
     font-weight: 600;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
 }
 
 .nav-toggle {
@@ -81,7 +81,7 @@ header {
 
 .fa-bars {
     color: var(--navbar-text-color);
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     padding: 0.7rem;
 }
 
@@ -159,7 +159,7 @@ nav a:hover {
     color: var(--standard-text-color);
     font-family: 'Open Sans';
     font-weight: 400;
-    font-size: 1.2rem;
+    font-size: 1rem;
     text-align: left;
 }
 
@@ -179,7 +179,7 @@ nav a:hover {
 .welcome p {
     font-family: 'Open Sans';
     font-weight: 400;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
 }
 
 .welcome-images {
@@ -246,10 +246,20 @@ nav a:hover {
 
 /* --------------  Contacts page  -------------- */
 
-main .taxpayer-num {
-    font-size: 0.9rem;
+
+.contacts-text .taxpayer-num {
+    font-size: 0.8rem;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
+}
+
+.contacts-text a {
+    color: var(--standard-text-color);
+    text-decoration: none;
+}
+
+.contacts-container a:hover {
+    text-decoration: underline;
 }
 
 .map {
@@ -274,6 +284,61 @@ iframe {
     border: none;
 }
 
+
+/* --------------  FAQ page  -------------- */
+
+.faq-description {
+    padding-bottom: 1.3rem;
+}
+
+.question-answer {
+    padding-bottom: 1rem;
+}
+
+.feedback-form .description {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.form-fields {
+    max-width: 600px;
+}
+
+.form-fields input {
+    max-width: 14rem;
+    min-height: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.form-fields textarea {
+    resize: none;
+    color: black;
+    font-family: 'Open Sans';
+    font-weight: 400;
+    font-size: 1rem;
+    text-align: left;
+}
+
+#question {
+    max-width: 100%;
+}
+
+label {
+    color: var(--standard-text-color);
+    font-family: 'Open Sans';
+    font-weight: 400;
+    font-size: 1rem;
+    text-align: left;
+}
+
+.send-button {
+    margin-top: 0.5rem;
+    width: 6rem;
+    height: 1.5rem;
+    font-family: 'Open Sans';
+    font-weight: 400;
+    font-size: 0.8rem;    
+}
 
 /* --------------  Footer  -------------- */
 
@@ -301,7 +366,7 @@ footer .copyright {
     align-items: end;
     font-family: 'Open Sans';
     font-weight: 400;
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     text-align: left;
     padding-bottom: 2rem;
     flex-grow: 1;
@@ -312,14 +377,14 @@ footer .logo {
     color: var(--navbar-text-color);
     font-family: 'Open Sans';
     font-weight: 600;
-    font-size: 1.7rem;
+    font-size: 1.5rem;
     text-align: right;
 }
 
 footer .company-info {
     font-family: 'Open Sans';
     font-weight: 400;
-    font-size: 1.1rem;
+    font-size: 1rem;
     text-align: right;
     padding-top: 2rem;
     padding-bottom: 2rem;
@@ -329,7 +394,7 @@ footer .company-info {
 
 /* --------------  Media queries  -------------- */
 
-@media screen and (min-width: 56rem) {
+@media screen and (min-width: 54rem) {
     :root {
         --container-padding: 1.7rem;
     }
