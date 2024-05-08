@@ -1,0 +1,30 @@
+* {
+    box-sizing: border-box;
+    background-color: #171a1f;
+    color: #bec4cc;
+}
+
+body {
+    padding-top: 1rem;
+    padding-left: 1rem;
+}
+
+label {
+    padding-right: 0.5rem;
+}
+
+input {
+    background-color: #454952;
+    color: #c6ccd6;
+    margin-bottom: 0.5rem;
+}
+
+.text-input {
+    width: 20rem;
+    min-height: 1.6rem;
+}
+
+.button {
+    min-width: 7rem;
+    min-height: 1.6rem;
+}
