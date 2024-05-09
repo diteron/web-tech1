@@ -31,63 +31,50 @@
             </div>
             <input class="button" type="submit" name="add-company-button" value="Add company">
         </form>
-    </div>
-    <?php
-    // Чтение файла с данными о компаниях
-    $file = fopen("companies.csv", "a+");
-    $currentLine = 0;
-    $companies[][4] = "";
-    while (!feof($file)) {
-        $companies[$currentLine++] = fgetcsv($file);
-    }
-
-    $isAddButtonPressed = false;
-    if (isset($_POST['add-company-button'])) {
-        $isAddButtonPressed = true;
-    }
-
-    $isNameCorrect = false;
-    $name = "";
-    $address = "";
-    $phone = "";
-    $email = "";
-
-    if ($isAddButtonPressed && isset($_POST['name'])) {
-        $name = trim($_POST['name']);
-        if ($name != "") {
-            $isNameCorrect = true;
+        <?php
+        // Чтение файла с данными о компаниях    
+        $file = fopen("companies.csv", "a+");
+        $currentLine = 0;
+        $companies[][4] = "";
+        while (!feof($file)) {
+            $companies[$currentLine++] = fgetcsv($file);
         }
-        else {
-            echo '<span class="error-text">Enter correct name</span>';
-        }
-    }
-    // Поиск компании с тем же именем
-    if ($isNameCorrect) {
-        for ($i = 0; $i < count($companies) - 1; ++$i) {
-            if ($companies[$i][0] == $name) {
-                echo '<span class="warning-text">Company already exist</span>';
-                $isNameCorrect = false;
+
+        $isAddButtonPressed = isset($_POST['add-company-button']);
+        if ($isAddButtonPressed) {
+            $name = isset($_POST['name']) ? trim($_POST['name']) : "";
+            $isNameCorrect = !empty($name);
+
+            if ($isNameCorrect) {
+                addCompany($name, $companies, $file);
+            } else {
+                echo '<span class="error-text">Enter correct name</span>';
             }
         }
-    }
 
-    if ($isNameCorrect) {
-        if (isset($_POST['address'])) {
-            $address = trim($_POST['address']);
+        function addCompany($name, &$companies, &$file): void {
+            $isAddingSameCompany = isSameCompanyAdded($name, $companies);
+            if (!$isAddingSameCompany) {
+                $address = isset($_POST['address']) ? trim($_POST['address']) : "";
+                $phone = isset($_POST['phone']) ? trim($_POST['phone']) : "";
+                $email = isset($_POST['email']) ? trim($_POST['email']) : "";
+                fputcsv($file, array($name, $address, $phone, $email));
+                header("Refresh:0");
+            } else {
+                echo '<span class="warning-text">Company already exist</span>';
+            }
         }
 
-        if (isset($_POST['phone'])) {
-            $phone = trim($_POST['phone']);
+        function isSameCompanyAdded($companyName, &$companies): bool {
+            for ($i = 0; $i < count($companies) - 1; ++$i) {
+                if ($companies[$i][0] == $companyName) {
+                    return true;
+                }
+            }
+            return false;
         }
-
-        if (isset($_POST['email'])) {
-            $email = trim($_POST['email']);
-        }
-
-        fputcsv($file, array($name, $address, $phone, $email));
-        header("Refresh:0");
-    }
-    ?>
+        ?>
+    </div>
 
     <div class="company-search">
         <div class="search-name-input">
@@ -100,61 +87,54 @@
                 <input class="button" type="submit" name="search-company-button" value="Search">
             </form>
             <?php
-            $isSearchButtonPressed = false;
-            if (isset($_POST['search-company-button'])) {
-                $isSearchButtonPressed = true;
-            }
+            $isSearchButtonPressed = isset($_POST['search-company-button']);
 
             $searchName = "";
-            $isSearchNameCorrect = false;
             if ($isSearchButtonPressed && isset($_POST['search-name'])) {
                 $searchName = trim($_POST['search-name']);
-                if ($searchName != "") {
-                    $isSearchNameCorrect = true;
-                }
-                else {
-                    echo '<span class="error-text">Enter correct name for search</span>';
-                }
             }
+            $isSearchNameCorrect = !empty($searchName);
+
             // Поиск компании
-            $foundCompany[] = '';
-            $isCompanyFound = false;
+            $foundCompany[] = "";
             if ($isSearchNameCorrect) {
                 for ($i = 0; $i < count($companies) - 1; ++$i) {
                     if ($companies[$i][0] == $searchName) {
                         $foundCompany = $companies[$i];
-                        $isCompanyFound = true;
                         break;
                     }
                 }
+            } else if ($isSearchButtonPressed) {
+                echo '<span class="error-text">Enter correct name for search</span>';
             }
             ?>
         </div>
 
-        <div class="search-result">
-            <?php if ($isCompanyFound) { ?>
-                <table>
-                    <tr>
-                        <th>Name</th>
-                        <th>Address</th>
-                        <th>Phone</th>
-                        <th>E-mail</th>
-                    </tr>
-                    <?php
+        <?php if ($isSearchButtonPressed && $isSearchNameCorrect) { ?>
+            <div class="search-result">
+                <?php if (!empty($foundCompany[0])) { ?>
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Address</th>
+                            <th>Phone</th>
+                            <th>E-mail</th>
+                        </tr>
+                        <?php
                         echo '<tr>';
                         for ($i = 0; $i < count($foundCompany); ++$i) {
                             echo '<td>', $foundCompany[$i], '</td>';
                         }
                         echo '</tr>';
-                    ?>
-                </table>
-            <?php 
-            } 
-            else if ($isSearchButtonPressed && $isSearchNameCorrect) {
-                echo '<span class="warning-text">There is no such company</span>';
-            }
-            ?>
-        </div>
+                        ?>
+                    </table>
+                <?php
+                } else {
+                    echo '<span class="warning-text">There is no such company</span>';
+                }
+                ?>
+            </div>
+        <?php } ?>
     </div>
 
     <div class="companies-list">
@@ -167,10 +147,9 @@
                 <th>E-mail</th>
             </tr>
             <?php
-            // Вывод данных о компаниях в таблицу
             for ($i = 0; $i < count($companies) - 1; ++$i) {
                 echo "<tr>";
-                for ($j = 0; $j < count($companies[0]); ++$j) {
+                for ($j = 0; $j < count($companies[$i]); ++$j) {
                     echo "<td>", $companies[$i][$j], "</td>";
                 }
                 echo "</tr>";
@@ -181,7 +160,3 @@
 </body>
 
 </html>
-
-<?php
-
-?>
