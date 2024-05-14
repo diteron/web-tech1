@@ -9,10 +9,9 @@
             "server": "localhost",
             "port": 3306,
             "driver": "MySQL",
-            "name": "MySQL",
-            "database": "task5_db",
-            "username": "root",
-            "askForPassword": true
+            "name": "emails",
+            "database": "emails",
+            "username": "root"
         }
     ]
 }
