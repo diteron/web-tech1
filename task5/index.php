@@ -33,7 +33,7 @@
     }
 
 
-    function fetchTableNames($pdo): array {
+    function fetchTableNames(PDO $pdo): array {
         $sql = "SHOW TABLES";
         $stmt = $pdo->query($sql);
         $dataArrays = $stmt->fetchAll(PDO::FETCH_NUM);
@@ -48,14 +48,14 @@
         return $tableNames;
     }
 
-    function printTable($pdo, string $tableName): void {
+    function printTable(PDO $pdo, string $tableName): void {
         echo '<div class="db-table"><h2>', $tableName, '</h2><table>';
         printColumnsInfo($pdo, $tableName);
         printTableData($pdo, $tableName);
         echo '</table></div>';
     }
 
-    function printColumnsInfo($pdo, string $tableName): void {
+    function printColumnsInfo(PDO $pdo, string $tableName): void {
         $sql = "DESCRIBE $tableName";
         $stmt = $pdo->query($sql);
         $columnsInfoArr = $stmt->fetchAll(PDO::FETCH_NUM);
@@ -73,7 +73,7 @@
         echo '</tr>';
     }
 
-    function printTableData($pdo, string $tableName): void {
+    function printTableData(PDO $pdo, string $tableName): void {
         $sql = "SELECT * FROM $tableName";
         $stmt = $pdo->query($sql);
         $tableRows = $stmt->fetchAll(PDO::FETCH_NUM);

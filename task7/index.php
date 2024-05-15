@@ -78,7 +78,7 @@
             sendEmail($emails);
         }
 
-        function getEmailsFromDb($pdo): string {
+        function getEmailsFromDb(PDO $pdo): string {
             $query = 'SELECT * FROM emails';
             $stmt = $pdo->query($query);
             $emailsDbRows = $stmt->fetchAll(PDO::FETCH_NUM);

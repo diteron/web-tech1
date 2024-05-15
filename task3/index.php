@@ -52,7 +52,7 @@
             }
         }
 
-        function addCompany($name, &$companies, &$file): void {
+        function addCompany(string $name, array &$companies, &$file): void {
             $isAddingSameCompany = isSameCompanyAdded($name, $companies);
             if (!$isAddingSameCompany) {
                 $address = isset($_POST['address']) ? trim($_POST['address']) : "";
@@ -65,7 +65,7 @@
             }
         }
 
-        function isSameCompanyAdded($companyName, &$companies): bool {
+        function isSameCompanyAdded(string $companyName, array &$companies): bool {
             for ($i = 0; $i < count($companies) - 1; ++$i) {
                 if ($companies[$i][0] == $companyName) {
                     return true;

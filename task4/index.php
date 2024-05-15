@@ -51,9 +51,9 @@
             return true;
         }
 
-        function formatEmailsInText(string &$text, array &$emails) : string {
+        function formatEmailsInText(string &$text, array &$emails): string {
             $emailRegex = '/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}/i';
-            $callback = function ($matches) use (&$emails) {
+            $callback = function ($matches) use (&$emails): string {
                 $formattedEmail = "<a class=\"email\" href=\"mailto:$matches[0]\">$matches[0]</a>";
                 $emails[] = $formattedEmail;
                 return $formattedEmail;

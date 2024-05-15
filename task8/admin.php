@@ -50,7 +50,7 @@
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    function getAllVisitsOfPage($pageId, $pdo): array
+    function getAllVisitsOfPage(int $pageId, PDO $pdo): array
     {
         $query = "SELECT * FROM `visits`
                   WHERE `page_id` = $pageId;";

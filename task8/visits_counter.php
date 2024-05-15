@@ -31,7 +31,7 @@ function connectToDataBase(string $dbName): PDO {
     return $pdo;
 }
 
-function getPageDbId($pageName, $pdo): int {
+function getPageDbId(string $pageName, PDO $pdo): int {
     $query = "SELECT `id` FROM `pages`
               WHERE `page_name` = '$pageName';";
     $stmt = $pdo->query($query);
@@ -41,13 +41,13 @@ function getPageDbId($pageName, $pdo): int {
                           : 0;
 }
 
-function registerNewPageInDb($pageName, $pdo) {
+function registerNewPageInDb(string $pageName, PDO $pdo): void {
     $query = "INSERT INTO `pages` (`page_name`)
               VALUES ('$pageName');";
     $pdo->query($query);
 }
 
-function registerVisitInDb($pdo, $pageId): bool {
+function registerVisitInDb(PDO $pdo, int $pageId): bool {
     $visitTime = date_create();
     if (isNextDayVisit($pdo, $visitTime)) {
         truncateTable($pdo, 'visits');
@@ -65,14 +65,14 @@ function registerVisitInDb($pdo, $pageId): bool {
     return true;
 }
 
-function isNextDayVisit($pdo, $visitTime): bool { 
+function isNextDayVisit(PDO $pdo, DateTime $visitTime): bool { 
     $visitDate = date_format($visitTime, "Y-m-d");
     $lastVisitDate = date_format(getDateOfLastVisit($pdo), "Y-m-d");
 
     return $visitDate != $lastVisitDate;
 }
 
-function getDateOfLastVisit($pdo): DateTimeInterface {
+function getDateOfLastVisit(PDO $pdo): DateTime {
     $query = "SELECT `visit_time` FROM `visits`
               WHERE `id` = (SELECT max(`id`) FROM `visits`);";
     $stmt = $pdo->query($query);
@@ -82,7 +82,7 @@ function getDateOfLastVisit($pdo): DateTimeInterface {
                                  : date_create();
 }
 
-function truncateTable($pdo, $tableName): void {
+function truncateTable(PDO $pdo, string $tableName): void {
     $query = "TRUNCATE TABLE `$tableName`;";
     $pdo->query($query);
 }
