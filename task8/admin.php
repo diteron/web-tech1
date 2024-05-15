@@ -44,7 +44,7 @@
         return $pdo;
     }
 
-    function getAllPages($pdo): array {
+    function getAllPages(PDO $pdo): array {
         $query = "SELECT * FROM `pages`;";
         $stmt = $pdo->query($query);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
