@@ -5,7 +5,7 @@ $pdo = connectToDataBase('visits_db');
 $pageName = $_SERVER['SCRIPT_NAME'];
 $pageId = getPageDbId($pageName, $pdo);
 
-// If page not registered in database
+// If the page is not registered in the database
 if ($pageId == 0) {
     registerNewPageInDb($pageName, $pdo);
     $pageId = $pdo->lastInsertId();
