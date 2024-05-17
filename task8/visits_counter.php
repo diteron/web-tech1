@@ -20,7 +20,6 @@ function connectToDataBase(string $dbName): PDO {
     $charset =      'utf8mb4';
 
     $dsn = "mysql:host=$host;dbname=$dbName;charset=$charset";
-    $pdo = new PDO($dsn, $user, $password);
 
     try {
         $pdo = new PDO($dsn, $user, $password);

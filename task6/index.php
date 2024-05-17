@@ -24,7 +24,7 @@
     ?>
 
     <div class="visits-count">
-        <h2>Your number of site visits: <?php echo count($visits); ?></h2>
+        <h2>Number of site visits: <?php echo count($visits); ?></h2>
     </div>
     <div class="visits-time">
         <h2>List of visits:</h2>

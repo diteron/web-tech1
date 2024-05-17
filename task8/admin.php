@@ -33,7 +33,6 @@
         $charset =      'utf8mb4';
 
         $dsn = "mysql:host=$host;dbname=$dbName;charset=$charset";
-        $pdo = new PDO($dsn, $user, $password);
 
         try {
             $pdo = new PDO($dsn, $user, $password);
@@ -50,8 +49,7 @@
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    function getAllVisitsOfPage(int $pageId, PDO $pdo): array
-    {
+    function getAllVisitsOfPage(int $pageId, PDO $pdo): array {
         $query = "SELECT * FROM `visits`
                   WHERE `page_id` = $pageId;";
         $stmt = $pdo->query($query);

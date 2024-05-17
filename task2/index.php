@@ -31,16 +31,25 @@ if (isset($_POST['arr1']) && isset($_POST['arr2'])) {
     print_r($arr2);
     echo "<br>";
 
-    foreach ($arr2 as $element) {
-        $arr1[] = $element;
+    $mergedArr = [];
+    foreach ($arr1 as $element) {
+        if (isStrIntNum($element)) {
+            $mergedArr[] = $element;
+        }
     }
 
-    echo "<Объединенный массив:<br>";
-    print_r($arr1);
+    foreach ($arr2 as $element) {
+        if (isStrIntNum($element)) {
+            $mergedArr[] = $element;
+        }
+    }
+
+    echo "Объединенный массив:<br>";
+    print_r($mergedArr);
     echo "<br>";
 
     echo "<br>Четные числа в массиве:<br>";
-    foreach ($arr1 as $el) {
+    foreach ($mergedArr as $el) {
         if ((intval($el) % 2 == 0)) {
             echo "$el ";
         }
@@ -48,5 +57,13 @@ if (isset($_POST['arr1']) && isset($_POST['arr2'])) {
 }
 else {
     echo 'Введите оба массива';
-} 
+}
+
+function isStrIntNum(string $numStr) {
+    if ($numStr[0] == '-') {
+        return ctype_digit(substr($numStr, 1));
+    }
+    
+    return ctype_digit($numStr);
+}
 ?>

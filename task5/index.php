@@ -10,28 +10,51 @@
 </head>
 
 <body>
+    <div class="db-name-input">
+        <form action="index.php" method="POST">
+            <div class="form-field">
+                <label for="db-name">Enter name of the database to connect:</label>
+                <input class="text-input" type="text" id="db-name" name="db-name" required>
+            </div>
+            <input class="button" type="submit" name="db-connect-button" value="Connect">
+        </form>
+    </div>
+
     <?php
-    $host =         'localhost';
-    $db   =         'task5_db';
-    $user =         'root';
-    $password =     'password';
-    $charset =      'utf8mb4';
-
-    $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-    $pdo = new PDO($dsn, $user, $password);
-
-    try {
-        $pdo = new PDO($dsn, $user, $password);
-    } catch (PDOException $e) {
-        die("Failed to connect to database: " . $e->getMessage());
+    if (isset($_POST['db-connect-button'])) {
+        if (isset($_POST['db-name'])) {
+            $pdo = connectToDataBase($_POST['db-name']);
+            printDbTables($pdo);
+        } else {
+            echo '<span class="error-text">Enter database name</span>';
+        }
     }
 
-    $tableNames = fetchTableNames($pdo);
 
-    foreach ($tableNames as $tableName) {
-        printTable($pdo, $tableName);
+    function connectToDatabase(string $dbName): PDO {
+        $host =         'localhost';
+        $user =         'root';
+        $password =     'password';
+        $charset =      'utf8mb4';
+
+        $dsn = "mysql:host=$host;dbname=$dbName;charset=$charset";
+
+        try {
+            $pdo = new PDO($dsn, $user, $password);
+        } catch (PDOException $e) {
+            die('<span class="error-text">Failed to connect to database: </span>' . $e->getMessage());
+        }
+
+        return $pdo;
     }
 
+    function printDbTables(PDO $pdo): void {
+        $tableNames = fetchTableNames($pdo);
+
+        foreach ($tableNames as $tableName) {
+            printTable($pdo, $tableName);
+        }
+    }
 
     function fetchTableNames(PDO $pdo): array {
         $sql = "SHOW TABLES";
@@ -44,7 +67,7 @@
                 $tableNames[] = $tableName;
             }
         }
-        
+
         return $tableNames;
     }
 

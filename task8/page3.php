@@ -2,7 +2,7 @@
 
 <html lang="ru">
 
-<?php require __DIR__ . '\visits_counter.php'; ?>
+<?php require __DIR__ . '\visits_counter.php'; echo "1" + 1; ?>
 
 <head>
     <meta charset="UTF-8">

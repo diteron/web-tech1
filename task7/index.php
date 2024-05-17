@@ -18,7 +18,6 @@
     $charset =      'utf8mb4';
 
     $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-    $pdo = new PDO($dsn, $user, $password);
 
     try {
         $pdo = new PDO($dsn, $user, $password);
@@ -41,8 +40,8 @@
         if ($isAddEmailButtonPressed) {
             if (isset($_POST['email'])) {
                 $email = $_POST['email'];
-                $query = "INSERT INTO emails (email) VALUES
-                        (?);";
+                $query = "INSERT INTO emails (email) 
+                          VALUES (?);";
                 $stmt = $pdo->prepare($query);
 
                 try {
